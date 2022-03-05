@@ -1,4 +1,4 @@
-package ohho.backend.spring.domain.partner;
+package ohho.backend.spring.domain.partner.entity;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import ohho.backend.spring.domain.member.Member;
+import ohho.backend.spring.domain.member.entity.Member;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -30,8 +30,12 @@ public class Partner {
 
     private String goal;
 
+    /* 연관관계 */
+
     @OneToMany(mappedBy = "partner", cascade = CascadeType.ALL)
     private List<Member> members = new ArrayList<>();
+
+    /* date 컬럼 */
 
     @CreatedDate
     @Column(updatable = false, nullable = false)
