@@ -1,4 +1,4 @@
-package ohho.backend.spring.domain.exerciseHistory.entity;
+package ohho.backend.spring.domain.exerciseHistory.entities;
 
 import java.time.LocalDateTime;
 import javax.persistence.Column;
@@ -8,16 +8,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import lombok.Getter;
-import ohho.backend.spring.domain.exercise.entity.Exercise;
-import ohho.backend.spring.domain.member.entity.Member;
+import ohho.backend.spring.common.entities.BaseEntity;
+import ohho.backend.spring.domain.exercise.entities.Exercise;
+import ohho.backend.spring.domain.member.entities.Member;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 @Entity
 @Getter
-public class ExerciseHistory {
+public class ExerciseHistory extends BaseEntity {
 
     @Id
     @GeneratedValue
