@@ -16,19 +16,19 @@ public class JwtService {
     @Value("${jwt.secretKey}")
     private String secretKey;
 
-    private static final String CLAIM_NAME_APPLICANT_ID = "ApplicantId";
+    private static final String CLAIM_NAME_MEMBER_ID = "MemberId";
     private Algorithm algorithm;
     private JWTVerifier jwtVerifier;
 
-    public String encode(Long applicantId) {
+    public String encode(Long memberId) {
         return JWT.create()
-            .withClaim(CLAIM_NAME_APPLICANT_ID, applicantId)
+            .withClaim(CLAIM_NAME_MEMBER_ID, memberId)
             .sign(algorithm);
     }
 
     public Long decode(String token) {
         try {
-            return jwtVerifier.verify(token).getClaim(CLAIM_NAME_APPLICANT_ID).asLong();
+            return jwtVerifier.verify(token).getClaim(CLAIM_NAME_MEMBER_ID).asLong();
         } catch (JWTVerificationException e) {
             log.warn("Failed to decode jwt. token: {}", token, e);
             return null;
