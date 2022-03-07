@@ -27,6 +27,16 @@ dependencies {
     runtimeOnly 'mysql:mysql-connector-java'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    /* 로그인 관련 */
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    /* jwt 관련 */
+    implementation "com.auth0:java-jwt:$javaJwtVersion"
+
+    /* 환경변수 암호화 관련 */
+    implementation "com.github.ulisesbocchio:jasypt-spring-boot-starter:$jasyptVersion"
 }
 
 tasks.named('test') {

@@ -6,27 +6,38 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.ToString;
 import ohho.backend.spring.common.entities.BaseEntity;
 import ohho.backend.spring.domain.exerciseHistory.entities.ExerciseHistory;
 import ohho.backend.spring.domain.group.entities.Group;
 import ohho.backend.spring.domain.partner.entities.Partner;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
 @Getter
+@ToString(of = {"id"})
+@EqualsAndHashCode(of = "id")
+@EntityListeners(AuditingEntityListener.class)
 public class Member extends BaseEntity {
 
     @Id
     @GeneratedValue
     private Long id;
+
+    private String email;
+
+    private String password;
 
     private String nickName;
 
@@ -53,4 +64,15 @@ public class Member extends BaseEntity {
 
     @LastModifiedDate
     private LocalDateTime updatedAt;
+
+    protected Member() {
+    }
+
+    public static Member of(String email, String password, String nickName) {
+        Member member = new Member();
+        member.email = email;
+        member.password = password;
+        member.nickName = nickName;
+        return member;
+    }
 }
