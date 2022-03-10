@@ -2,7 +2,6 @@ package ohho.backend.spring.domain.exerciseHistory.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import lombok.Getter;
 import ohho.backend.spring.common.entities.BaseEntity;

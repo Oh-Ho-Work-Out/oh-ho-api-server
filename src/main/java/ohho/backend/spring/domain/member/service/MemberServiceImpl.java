@@ -63,7 +63,6 @@ public class MemberServiceImpl implements MemberService {
             throw new MemberEmailDuplicatedException(
                 "이미 사용중인 email 입니다. email: " + signUpRequestDto.getEmail());
         }
-
         if (memberRepository.existsByNickName(signUpRequestDto.getNickname())) {
             throw new MemberNicknameAlreadyExistException(
                 "이미 사용중인 nickname 입니다. nickname: " + signUpRequestDto.getNickname());
