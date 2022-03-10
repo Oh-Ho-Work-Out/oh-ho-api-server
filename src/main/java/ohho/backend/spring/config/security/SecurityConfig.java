@@ -53,8 +53,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.antMatcher("/api/v1/**")
             .authorizeRequests()
-            .antMatchers("/api/v1/teams/**").permitAll()
-            .antMatchers("/api/v1/applicants/login").permitAll()
+            .antMatchers("/api/v1/members/signin").permitAll()
+            .antMatchers("/api/v1/members/signup").permitAll()
             .anyRequest().hasAuthority(MEMBER_ROLE_NAME);
         http.cors().configurationSource(corsConfigurationSource());
         http.csrf().disable();
