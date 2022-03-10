@@ -5,7 +5,6 @@ import ohho.backend.spring.common.response.ApiResponse;
 import ohho.backend.spring.domain.member.model.request.SignInRequestDto;
 import ohho.backend.spring.domain.member.model.request.SignUpRequestDto;
 import ohho.backend.spring.domain.member.model.response.SignInResponseDto;
-import ohho.backend.spring.domain.member.entities.Member;
 import ohho.backend.spring.domain.member.model.response.SignUpResponseDto;
 import ohho.backend.spring.domain.member.service.MemberService;
 import org.springframework.web.bind.annotation.PostMapping;
