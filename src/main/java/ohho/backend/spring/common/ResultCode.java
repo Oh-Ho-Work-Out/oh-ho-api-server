@@ -11,7 +11,8 @@ public enum ResultCode {
     INTERNAL_SERVER_ERROR("서버에 오류가 발생했습니다. 잠시 후 다시 시도해주세요."),
 
     // member (사용자)
-    MEMBER_NOT_FOUND("사용자가 존재하지 않습니다.");
+    MEMBER_NOT_FOUND("사용자가 존재하지 않습니다."),
+    MEMBER_NICKNAME_ALREADY_EXIST("이미 존재하는 닉네임입니다.");
 
     private final String message;
 

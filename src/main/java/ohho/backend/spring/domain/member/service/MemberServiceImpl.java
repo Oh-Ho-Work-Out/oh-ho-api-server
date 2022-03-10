@@ -4,6 +4,7 @@ import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import ohho.backend.spring.config.jwt.JwtService;
 import ohho.backend.spring.domain.member.entities.Member;
+import ohho.backend.spring.domain.member.exception.MemberNicknameAlreadyExistException;
 import ohho.backend.spring.domain.member.exception.MemberNotFoundException;
 import ohho.backend.spring.domain.member.exception.MemberEmailDuplicatedException;
 import ohho.backend.spring.domain.member.exception.MemberSignUpRequestInvalidException;
@@ -61,6 +62,11 @@ public class MemberServiceImpl implements MemberService {
         if (memberRepository.existsByEmail(signUpRequestDto.getEmail())) {
             throw new MemberEmailDuplicatedException(
                 "이미 사용중인 email 입니다. email: " + signUpRequestDto.getEmail());
+        }
+
+        if (memberRepository.existsByNickName(signUpRequestDto.getNickname())) {
+            throw new MemberNicknameAlreadyExistException(
+                "이미 사용중인 nickname 입니다. nickname: " + signUpRequestDto.getNickname());
         }
     }
 
