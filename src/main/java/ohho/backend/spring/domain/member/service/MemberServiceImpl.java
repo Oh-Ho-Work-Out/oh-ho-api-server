@@ -1,15 +1,17 @@
 package ohho.backend.spring.domain.member.service;
 
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import ohho.backend.spring.config.jwt.JwtService;
 import ohho.backend.spring.domain.member.entities.Member;
 import ohho.backend.spring.domain.member.exception.MemberNotFoundException;
 import ohho.backend.spring.domain.member.exception.MemberEmailDuplicatedException;
 import ohho.backend.spring.domain.member.exception.MemberSignUpRequestInvalidException;
+import ohho.backend.spring.domain.member.model.request.SignInRequestDto;
+import ohho.backend.spring.domain.member.model.request.SignUpRequestDto;
+import ohho.backend.spring.domain.member.model.response.SignInResponseDto;
+import ohho.backend.spring.domain.member.model.response.SignUpResponseDto;
 import ohho.backend.spring.domain.member.repository.MemberRepository;
-import ohho.backend.spring.domain.member.vo.JoinRequestVo;
-import ohho.backend.spring.domain.member.vo.LoginRequestVo;
-import ohho.backend.spring.domain.member.vo.LoginResponseVo;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,49 +28,55 @@ public class MemberServiceImpl implements MemberService {
     private final JwtService jwtService;
 
     @Override
-    public Member signUp(JoinRequestVo joinRequestVo) {
-        Assert.notNull(joinRequestVo, "'joinRequestVo' must not be null");
-        validate(joinRequestVo);
+    @Transactional
+    public SignUpResponseDto signUp(SignUpRequestDto signUpRequestDto) {
+        Assert.notNull(signUpRequestDto, "'joinRequestVo' must not be null");
+        validate(signUpRequestDto);
 
         Member member = Member.of(
-            joinRequestVo.getEmail(),
-            passwordEncoder.encode(joinRequestVo.getPassword()),
-            joinRequestVo.getNickname()
+            signUpRequestDto.getEmail(),
+            passwordEncoder.encode(signUpRequestDto.getPassword()),
+            signUpRequestDto.getNickname()
         );
-        // TODO: 클라쪽에서 로그인 어떻게 처리할지 논의
-        return memberRepository.save(member);
+        memberRepository.save(member);
+
+        return new SignUpResponseDto(jwtService.encode(member.getId()));
     }
 
-    private void validate(JoinRequestVo joinRequestVo) {
-        Assert.notNull(joinRequestVo, "'adminMemberVo' must not be null");
+    private void validate(SignUpRequestDto signUpRequestDto) {
+        Assert.notNull(signUpRequestDto, "'adminMemberVo' must not be null");
 
-        if (!StringUtils.hasText(joinRequestVo.getEmail())) {
+        if (!StringUtils.hasText(signUpRequestDto.getEmail())) {
             throw new MemberSignUpRequestInvalidException(
                 "'username' must not be null, empty or blank");
         }
-        if (!StringUtils.hasText(joinRequestVo.getPassword())) {
+        if (!StringUtils.hasText(signUpRequestDto.getPassword())) {
             throw new MemberSignUpRequestInvalidException(
                 "'password' must not be null, empty or blank");
         }
-        if (!StringUtils.hasText(joinRequestVo.getNickname())) {
+        if (!StringUtils.hasText(signUpRequestDto.getNickname())) {
             throw new MemberSignUpRequestInvalidException(
                 "'nickname' must not be null, empty or blank");
         }
-        if (memberRepository.existsByEmail(joinRequestVo.getEmail())) {
+        if (memberRepository.existsByEmail(signUpRequestDto.getEmail())) {
             throw new MemberEmailDuplicatedException(
-                "이미 사용중인 email 입니다. email: " + joinRequestVo.getEmail());
+                "이미 사용중인 email 입니다. email: " + signUpRequestDto.getEmail());
         }
     }
 
     @Override
-    public LoginResponseVo signIn(LoginRequestVo loginRequestVo) {
-        Member member = memberRepository.findByEmailAndPassword(loginRequestVo.getEmail(),
-                passwordEncoder.encode(loginRequestVo.getPassword()))
-            .orElseThrow(MemberNotFoundException::new);
-        return LoginResponseVo.of(
-            jwtService.encode(member.getId()),
-            member
-        );
+    public SignInResponseDto signIn(SignInRequestDto signInRequestDto) {
+        Optional<Member> existingMember = memberRepository.findByEmail(signInRequestDto.getEmail());
+        if (!existingMember.isPresent()) {
+            throw new MemberNotFoundException();
+        }
+
+        if (!passwordEncoder.matches(signInRequestDto.getPassword(),
+            existingMember.get().getPassword())) {
+            throw new MemberNotFoundException();
+        }
+
+        return new SignInResponseDto(jwtService.encode(existingMember.get().getId()));
     }
 
     @Override

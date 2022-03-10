@@ -35,7 +35,7 @@ public class Member extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private Organization organization;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<ExerciseHistory> exerciseHistories = new ArrayList<>();
 
     protected Member() {
