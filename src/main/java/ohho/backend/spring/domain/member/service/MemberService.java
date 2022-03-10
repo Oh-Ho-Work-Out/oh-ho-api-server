@@ -1,15 +1,16 @@
 package ohho.backend.spring.domain.member.service;
 
 import ohho.backend.spring.domain.member.entities.Member;
-import ohho.backend.spring.domain.member.vo.JoinRequestVo;
-import ohho.backend.spring.domain.member.vo.LoginRequestVo;
-import ohho.backend.spring.domain.member.vo.LoginResponseVo;
+import ohho.backend.spring.domain.member.model.request.SignInRequestDto;
+import ohho.backend.spring.domain.member.model.request.SignUpRequestDto;
+import ohho.backend.spring.domain.member.model.response.SignInResponseDto;
+import ohho.backend.spring.domain.member.model.response.SignUpResponseDto;
 
 public interface MemberService {
 
     Member getMember(Long memberId);
 
-    Member signUp(JoinRequestVo joinRequestVo);
+    SignUpResponseDto signUp(SignUpRequestDto signUpRequestDto);
 
-    LoginResponseVo signIn(LoginRequestVo loginRequestVo);
+    SignInResponseDto signIn(SignInRequestDto signInRequestDto);
 }
