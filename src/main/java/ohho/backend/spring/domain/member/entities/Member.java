@@ -5,14 +5,11 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import lombok.Getter;
 import ohho.backend.spring.common.entities.BaseEntity;
-import ohho.backend.spring.domain.exercise.enums.converter.ExerciseTypeConverter;
 import ohho.backend.spring.domain.exerciseHistory.entities.ExerciseHistory;
 import ohho.backend.spring.domain.member.enums.Age;
 import ohho.backend.spring.domain.member.enums.Gender;
@@ -53,11 +50,15 @@ public class Member extends BaseEntity {
     protected Member() {
     }
 
-    public static Member of(String email, String password, String nickName) {
+    public static Member of(String email, String password, String nickName,
+        String gender, String age) {
+
         Member member = new Member();
         member.email = email;
         member.password = password;
         member.nickName = nickName;
+        member.gender = Gender.ofGender(gender);
+        member.age = Age.ofAge(age);
         return member;
     }
 }
