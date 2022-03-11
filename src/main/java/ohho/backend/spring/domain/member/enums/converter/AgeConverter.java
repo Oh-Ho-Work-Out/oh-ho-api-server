@@ -7,7 +7,7 @@ public class AgeConverter implements AttributeConverter<Age, String> {
 
     @Override
     public String convertToDatabaseColumn(Age attribute) {
-        return attribute.getNumber();
+        return attribute.getAge();
     }
 
     @Override
