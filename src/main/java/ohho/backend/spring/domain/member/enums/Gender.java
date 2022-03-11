@@ -17,10 +17,10 @@ public enum Gender {
         this.value = value;
     }
 
-    public static Gender ofGender(String name) {
+    public static Gender ofGender(String value) {
 
         return Arrays.stream(Gender.values())
-            .filter(v -> v.getValue().equals(name))
+            .filter(v -> v.getValue().equals(value))
             .findAny()
             .orElseThrow(NoSuchElementException::new);
     }

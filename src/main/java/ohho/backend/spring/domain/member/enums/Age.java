@@ -6,18 +6,18 @@ import lombok.Getter;
 
 @Getter
 public enum Age {
-    TEN("10", "TEN"),
-    TWENTY("20", "TWENTY"),
-    Thirty("30", "Thirty"),
-    FORTY("40", "FORTY"),
-    FIFTY("50", "FIFTY"),
-    SIXTY("60", "SIXTY");
+    TEN("10", "10대"),
+    TWENTY("20", "20대"),
+    Thirty("30", "30대"),
+    FORTY("40", "40대"),
+    FIFTY("50", "50대"),
+    SIXTY("60", "60대");
 
-    final String number;
+    final String age;
     final String value;
 
-    Age(String number, String value) {
-        this.number = number;
+    Age(String age, String value) {
+        this.age = age;
         this.value = value;
     }
 
