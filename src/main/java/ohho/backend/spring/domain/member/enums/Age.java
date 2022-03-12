@@ -6,25 +6,25 @@ import lombok.Getter;
 
 @Getter
 public enum Age {
-    TEN("10", "10대"),
-    TWENTY("20", "20대"),
-    Thirty("30", "30대"),
-    FORTY("40", "40대"),
-    FIFTY("50", "50대"),
-    SIXTY("60", "60대");
+    TEN("10대", "10"),
+    TWENTY("20대", "20"),
+    Thirty("30대", "30"),
+    FORTY("40대", "40"),
+    FIFTY("50대", "50"),
+    SIXTY("60대", "60");
 
-    final String age;
     final String value;
+    final String code;
 
-    Age(String age, String value) {
-        this.age = age;
+    Age(String value, String code) {
         this.value = value;
+        this.code = code;
     }
 
-    public static Age ofAge(String value) {
+    public static Age ofAge(String code) {
 
         return Arrays.stream(Age.values())
-            .filter(v -> v.getValue().equals(value))
+            .filter(v -> v.getCode().equals(code))
             .findAny()
             .orElseThrow(NoSuchElementException::new);
     }

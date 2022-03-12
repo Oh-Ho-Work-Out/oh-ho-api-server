@@ -6,21 +6,21 @@ import lombok.Getter;
 
 @Getter
 public enum Gender {
-    WOMAN("W", "여성"),
-    MAN("M", "남성");
+    WOMAN("여성", "W"),
+    MAN("남성", "M");
 
-    final String code;
     final String value;
+    final String code;
 
-    Gender(String code, String value) {
-        this.code = code;
+    Gender(String value, String code) {
         this.value = value;
+        this.code = code;
     }
 
-    public static Gender ofGender(String value) {
+    public static Gender ofGender(String code) {
 
         return Arrays.stream(Gender.values())
-            .filter(v -> v.getValue().equals(value))
+            .filter(v -> v.getCode().equals(code))
             .findAny()
             .orElseThrow(NoSuchElementException::new);
     }
