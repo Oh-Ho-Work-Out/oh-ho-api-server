@@ -97,4 +97,10 @@ public class MemberServiceImpl implements MemberService {
         return new GetMyInfoResponseDto(member.getId(), member.getEmail(), member.getNickname(),
             member.getInterestList(), member.getGender(), member.getAge());
     }
+
+    @Override
+    public Member getMember(Long memberId) {
+        Assert.notNull(memberId, "'memberId' must not be null");
+        return memberRepository.findById(memberId).orElseThrow(MemberNotFoundException::new);
+    }
 }

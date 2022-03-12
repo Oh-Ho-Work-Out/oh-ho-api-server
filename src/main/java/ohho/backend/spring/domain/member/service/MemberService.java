@@ -9,6 +9,8 @@ import ohho.backend.spring.domain.member.model.response.SignUpResponseDto;
 
 public interface MemberService {
 
+    Member getMember(Long memberId);
+
     GetMyInfoResponseDto getMyInfo(Long memberId);
 
     SignUpResponseDto signUp(SignUpRequestDto signUpRequestDto);
