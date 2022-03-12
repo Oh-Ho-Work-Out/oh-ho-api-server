@@ -11,6 +11,7 @@ import ohho.backend.spring.domain.member.exception.MemberEmailDuplicatedExceptio
 import ohho.backend.spring.domain.member.exception.MemberSignUpRequestInvalidException;
 import ohho.backend.spring.domain.member.model.request.SignInRequestDto;
 import ohho.backend.spring.domain.member.model.request.SignUpRequestDto;
+import ohho.backend.spring.domain.member.model.response.GetMyInfoResponseDto;
 import ohho.backend.spring.domain.member.model.response.SignInResponseDto;
 import ohho.backend.spring.domain.member.model.response.SignUpResponseDto;
 import ohho.backend.spring.domain.member.repository.MemberRepository;
@@ -66,7 +67,7 @@ public class MemberServiceImpl implements MemberService {
             throw new MemberEmailDuplicatedException(
                 "이미 사용중인 email 입니다. email: " + signUpRequestDto.getEmail());
         }
-        if (memberRepository.existsByNickName(signUpRequestDto.getNickname())) {
+        if (memberRepository.existsByNickname(signUpRequestDto.getNickname())) {
             throw new MemberNicknameAlreadyExistException(
                 "이미 사용중인 nickname 입니다. nickname: " + signUpRequestDto.getNickname());
         }
@@ -88,8 +89,12 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public Member getMember(Long memberId) {
+    public GetMyInfoResponseDto getMyInfo(Long memberId) {
         Assert.notNull(memberId, "'memberId' must not be null");
-        return memberRepository.findById(memberId).orElseThrow(MemberNotFoundException::new);
+        Member member = memberRepository.findById(memberId)
+            .orElseThrow(MemberNotFoundException::new);
+
+        return new GetMyInfoResponseDto(member.getId(), member.getEmail(), member.getNickname(),
+            member.getInterestList(), member.getGender(), member.getAge());
     }
 }

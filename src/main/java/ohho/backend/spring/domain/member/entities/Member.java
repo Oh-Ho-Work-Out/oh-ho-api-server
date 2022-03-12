@@ -26,7 +26,7 @@ public class Member extends BaseEntity {
 
     private String password;
 
-    private String nickName;
+    private String nickname;
 
     private String interestList;
 
@@ -50,13 +50,13 @@ public class Member extends BaseEntity {
     protected Member() {
     }
 
-    public static Member of(String email, String password, String nickName,
+    public static Member of(String email, String password, String nickname,
         String gender, String age) {
 
         Member member = new Member();
         member.email = email;
         member.password = password;
-        member.nickName = nickName;
+        member.nickname = nickname;
         member.gender = Gender.ofGender(gender);
         member.age = Age.ofAge(age);
         return member;
