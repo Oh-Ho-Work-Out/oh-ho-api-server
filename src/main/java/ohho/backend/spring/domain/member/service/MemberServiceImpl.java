@@ -4,12 +4,14 @@ import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import ohho.backend.spring.config.jwt.JwtService;
 import ohho.backend.spring.domain.member.entities.Member;
+import ohho.backend.spring.domain.member.enums.Gender;
 import ohho.backend.spring.domain.member.exception.MemberNicknameAlreadyExistException;
 import ohho.backend.spring.domain.member.exception.MemberNotFoundException;
 import ohho.backend.spring.domain.member.exception.MemberEmailDuplicatedException;
 import ohho.backend.spring.domain.member.exception.MemberSignUpRequestInvalidException;
 import ohho.backend.spring.domain.member.model.request.SignInRequestDto;
 import ohho.backend.spring.domain.member.model.request.SignUpRequestDto;
+import ohho.backend.spring.domain.member.model.response.GetMyInfoResponseDto;
 import ohho.backend.spring.domain.member.model.response.SignInResponseDto;
 import ohho.backend.spring.domain.member.model.response.SignUpResponseDto;
 import ohho.backend.spring.domain.member.repository.MemberRepository;
@@ -37,7 +39,9 @@ public class MemberServiceImpl implements MemberService {
         Member member = Member.of(
             signUpRequestDto.getEmail(),
             passwordEncoder.encode(signUpRequestDto.getPassword()),
-            signUpRequestDto.getNickname()
+            signUpRequestDto.getNickname(),
+            signUpRequestDto.getGender(),
+            signUpRequestDto.getAge()
         );
         memberRepository.save(member);
 
@@ -63,7 +67,7 @@ public class MemberServiceImpl implements MemberService {
             throw new MemberEmailDuplicatedException(
                 "이미 사용중인 email 입니다. email: " + signUpRequestDto.getEmail());
         }
-        if (memberRepository.existsByNickName(signUpRequestDto.getNickname())) {
+        if (memberRepository.existsByNickname(signUpRequestDto.getNickname())) {
             throw new MemberNicknameAlreadyExistException(
                 "이미 사용중인 nickname 입니다. nickname: " + signUpRequestDto.getNickname());
         }
@@ -82,6 +86,16 @@ public class MemberServiceImpl implements MemberService {
         }
 
         return new SignInResponseDto(jwtService.encode(existingMember.get().getId()));
+    }
+
+    @Override
+    public GetMyInfoResponseDto getMyInfo(Long memberId) {
+        Assert.notNull(memberId, "'memberId' must not be null");
+        Member member = memberRepository.findById(memberId)
+            .orElseThrow(MemberNotFoundException::new);
+
+        return new GetMyInfoResponseDto(member.getId(), member.getEmail(), member.getNickname(),
+            member.getInterestList(), member.getGender(), member.getAge());
     }
 
     @Override

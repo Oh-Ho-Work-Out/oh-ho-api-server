@@ -6,8 +6,9 @@ import lombok.RequiredArgsConstructor;
 import ohho.backend.spring.common.ResultCode;
 import ohho.backend.spring.common.response.ApiResponse;
 import ohho.backend.spring.config.jwt.JwtService;
-import ohho.backend.spring.domain.member.service.MemberService;
+import ohho.backend.spring.domain.member.repository.MemberRepository;
 
+import ohho.backend.spring.domain.member.service.MemberService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;

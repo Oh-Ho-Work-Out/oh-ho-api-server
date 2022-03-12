@@ -6,8 +6,8 @@ import lombok.RequiredArgsConstructor;
 import ohho.backend.spring.config.jwt.JwtService;
 import ohho.backend.spring.config.security.exception.TokenMissingException;
 import ohho.backend.spring.domain.member.entities.Member;
-import ohho.backend.spring.domain.member.service.MemberService;
 
+import ohho.backend.spring.domain.member.service.MemberService;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -26,10 +26,10 @@ public class PreAuthTokenProvider implements AuthenticationProvider {
         if (authentication instanceof PreAuthenticatedAuthenticationToken) {
             String token = authentication.getPrincipal().toString();
             Long memberId = jwtService.decode(token);
-            // TODO: 지원자 조회 실패하는 경우, AuthenticationException 으로 예외번역
-            Member applicant = memberService.getMember(memberId);
+            // TODO: 멤버 조회 실패하는 경우, AuthenticationException 으로 예외번역
+            Member member = memberService.getMember(memberId);
             return new PreAuthenticatedAuthenticationToken(
-                applicant.getId(),
+                member.getId(),
                 "",
                 Collections.singletonList(
                     new SimpleGrantedAuthority(SecurityConfig.MEMBER_ROLE_NAME))
