@@ -1,8 +1,7 @@
-package ohho.backend.spring.common.response;
+package ohho.backend.spring.common;
 
 import java.util.List;
 
-import ohho.backend.spring.common.ResultCode;
 import org.springframework.data.domain.Page;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
