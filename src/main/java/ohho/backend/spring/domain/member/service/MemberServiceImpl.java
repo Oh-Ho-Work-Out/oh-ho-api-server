@@ -10,7 +10,7 @@ import ohho.backend.spring.domain.member.exception.MemberSignUpRequestInvalidExc
 import ohho.backend.spring.domain.member.model.request.SignInRequestDto;
 import ohho.backend.spring.domain.member.model.request.SignUpRequestDto;
 import ohho.backend.spring.domain.member.model.response.GetMyInfoResponseDto;
-import ohho.backend.spring.domain.member.model.response.GetMemberByNicknameDto;
+import ohho.backend.spring.domain.member.model.response.GetMemberByNicknameResponseDto;
 import ohho.backend.spring.domain.member.model.response.SignInResponseDto;
 import ohho.backend.spring.domain.member.model.response.SignUpResponseDto;
 import ohho.backend.spring.domain.member.repository.MemberRepository;
@@ -102,10 +102,10 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public GetMemberByNicknameDto getMemberByNickname(String nickname) {
+    public GetMemberByNicknameResponseDto getMemberByNickname(String nickname) {
         Assert.notNull(nickname, "'nickname' must not be null");
         Member member = memberRepository.findByNickname(nickname)
             .orElseThrow(MemberNotFoundException::new);
-        return new GetMemberByNicknameDto(member.getId(), member.getNickname());
+        return new GetMemberByNicknameResponseDto(member.getId(), member.getNickname());
     }
 }

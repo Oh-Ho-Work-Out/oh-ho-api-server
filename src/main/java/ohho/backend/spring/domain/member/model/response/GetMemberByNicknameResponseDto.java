@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class GetMemberByNicknameDto {
+public class GetMemberByNicknameResponseDto {
 
     private Long id;
     private String nickname;

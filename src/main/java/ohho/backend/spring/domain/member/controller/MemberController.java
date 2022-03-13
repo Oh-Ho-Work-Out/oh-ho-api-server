@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import ohho.backend.spring.common.ApiResponse;
 import ohho.backend.spring.domain.member.model.request.SignInRequestDto;
 import ohho.backend.spring.domain.member.model.request.SignUpRequestDto;
-import ohho.backend.spring.domain.member.model.response.GetMemberByNicknameDto;
+import ohho.backend.spring.domain.member.model.response.GetMemberByNicknameResponseDto;
 import ohho.backend.spring.domain.member.model.response.GetMyInfoResponseDto;
 import ohho.backend.spring.domain.member.model.response.SignInResponseDto;
 import ohho.backend.spring.domain.member.model.response.SignUpResponseDto;
@@ -41,7 +41,7 @@ public class MemberController {
     }
 
     @GetMapping("/nickname/{nickname}")
-    public ApiResponse<GetMemberByNicknameDto> searchMemberByNickname(
+    public ApiResponse<GetMemberByNicknameResponseDto> searchMemberByNickname(
         @PathVariable("nickname") String nickname) {
         return ApiResponse.success(memberService.getMemberByNickname(nickname));
     }

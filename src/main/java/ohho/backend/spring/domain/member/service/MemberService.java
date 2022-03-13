@@ -4,7 +4,7 @@ import ohho.backend.spring.domain.member.entities.Member;
 import ohho.backend.spring.domain.member.model.request.SignInRequestDto;
 import ohho.backend.spring.domain.member.model.request.SignUpRequestDto;
 import ohho.backend.spring.domain.member.model.response.GetMyInfoResponseDto;
-import ohho.backend.spring.domain.member.model.response.GetMemberByNicknameDto;
+import ohho.backend.spring.domain.member.model.response.GetMemberByNicknameResponseDto;
 import ohho.backend.spring.domain.member.model.response.SignInResponseDto;
 import ohho.backend.spring.domain.member.model.response.SignUpResponseDto;
 
@@ -12,7 +12,7 @@ public interface MemberService {
 
     Member getMember(Long memberId);
 
-    GetMemberByNicknameDto getMemberByNickname(String nickname);
+    GetMemberByNicknameResponseDto getMemberByNickname(String nickname);
 
     GetMyInfoResponseDto getMyInfo(Long memberId);
 
