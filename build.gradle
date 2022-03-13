@@ -37,6 +37,9 @@ dependencies {
 
     /* 환경변수 암호화 관련 */
     implementation "com.github.ulisesbocchio:jasypt-spring-boot-starter:$jasyptVersion"
+
+    /* 마이그레이션 및 시드파일 관련 */
+    implementation "org.flywaydb:flyway-core:$flywaydbVersion"
 }
 
 tasks.named('test') {

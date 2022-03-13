@@ -12,5 +12,7 @@ spring:
         show_sql: true
         format_sql: true
         default_batch_fetch_size: 100
+  flyway:
+    enabled: false
 jwt:
   secretKey: ENC(V37JAtPWJmoZiv3+RDg+Gqa1opNuVQtjw8bk6MIFcH+lqJI4lIo9EpvfpuuLBOlj)

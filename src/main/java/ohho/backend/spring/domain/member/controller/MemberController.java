@@ -1,8 +1,7 @@
 package ohho.backend.spring.domain.member.controller;
 
 import lombok.RequiredArgsConstructor;
-import ohho.backend.spring.common.response.ApiResponse;
-import ohho.backend.spring.domain.member.entities.Member;
+import ohho.backend.spring.common.ApiResponse;
 import ohho.backend.spring.domain.member.model.request.SignInRequestDto;
 import ohho.backend.spring.domain.member.model.request.SignUpRequestDto;
 import ohho.backend.spring.domain.member.model.response.GetMyInfoResponseDto;

@@ -4,7 +4,6 @@ import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import ohho.backend.spring.config.jwt.JwtService;
 import ohho.backend.spring.domain.member.entities.Member;
-import ohho.backend.spring.domain.member.enums.Gender;
 import ohho.backend.spring.domain.member.exception.MemberNicknameAlreadyExistException;
 import ohho.backend.spring.domain.member.exception.MemberNotFoundException;
 import ohho.backend.spring.domain.member.exception.MemberEmailDuplicatedException;

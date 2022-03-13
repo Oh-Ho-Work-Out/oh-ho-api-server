@@ -8,7 +8,6 @@ import ohho.backend.spring.common.exception.InternalServerErrorException;
 import ohho.backend.spring.common.exception.NotFoundException;
 import ohho.backend.spring.common.exception.ServiceUnavailableException;
 import ohho.backend.spring.common.exception.UnauthorizedException;
-import ohho.backend.spring.common.response.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
 import org.springframework.web.HttpMediaTypeException;
