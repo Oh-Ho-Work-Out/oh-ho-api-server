@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import lombok.Data;
 
 @Data
-public class UpdateDdayAndGoalRequest {
+public class UpdateDdayAndGoalRequestDto {
 
     private LocalDate dDay;
     private String goal;
