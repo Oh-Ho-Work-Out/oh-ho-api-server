@@ -1,6 +1,5 @@
 package ohho.backend.spring.domain.member.service;
 
-import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import ohho.backend.spring.config.jwt.JwtService;
 import ohho.backend.spring.domain.member.entities.Member;
@@ -11,6 +10,7 @@ import ohho.backend.spring.domain.member.exception.MemberSignUpRequestInvalidExc
 import ohho.backend.spring.domain.member.model.request.SignInRequestDto;
 import ohho.backend.spring.domain.member.model.request.SignUpRequestDto;
 import ohho.backend.spring.domain.member.model.response.GetMyInfoResponseDto;
+import ohho.backend.spring.domain.member.model.response.GetMemberByNicknameResponseDto;
 import ohho.backend.spring.domain.member.model.response.SignInResponseDto;
 import ohho.backend.spring.domain.member.model.response.SignUpResponseDto;
 import ohho.backend.spring.domain.member.repository.MemberRepository;
@@ -74,17 +74,15 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public SignInResponseDto signIn(SignInRequestDto signInRequestDto) {
-        Optional<Member> existingMember = memberRepository.findByEmail(signInRequestDto.getEmail());
-        if (!existingMember.isPresent()) {
-            throw new MemberNotFoundException();
-        }
+        Member existingMember = memberRepository.findByEmail(signInRequestDto.getEmail())
+            .orElseThrow(MemberNotFoundException::new);
 
         if (!passwordEncoder.matches(signInRequestDto.getPassword(),
-            existingMember.get().getPassword())) {
+            existingMember.getPassword())) {
             throw new MemberNotFoundException();
         }
 
-        return new SignInResponseDto(jwtService.encode(existingMember.get().getId()));
+        return new SignInResponseDto(jwtService.encode(existingMember.getId()));
     }
 
     @Override
@@ -101,5 +99,13 @@ public class MemberServiceImpl implements MemberService {
     public Member getMember(Long memberId) {
         Assert.notNull(memberId, "'memberId' must not be null");
         return memberRepository.findById(memberId).orElseThrow(MemberNotFoundException::new);
+    }
+
+    @Override
+    public GetMemberByNicknameResponseDto getMemberByNickname(String nickname) {
+        Assert.notNull(nickname, "'nickname' must not be null");
+        Member member = memberRepository.findByNickname(nickname)
+            .orElseThrow(MemberNotFoundException::new);
+        return new GetMemberByNicknameResponseDto(member.getId(), member.getNickname());
     }
 }
