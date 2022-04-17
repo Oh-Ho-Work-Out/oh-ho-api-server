@@ -66,6 +66,10 @@ dependencies {
     /* querydsl 관련 */
     implementation 'com.querydsl:querydsl-jpa'
     implementation 'com.querydsl:querydsl-apt'
+
+    /* google api 관련 */
+    implementation "com.google.api-client:google-api-client:$googleApiClientVersion"
+    implementation "com.google.api-client:google-api-client-jackson2:$googleApiClientVersion"
 }
 
 tasks.named('test') {
