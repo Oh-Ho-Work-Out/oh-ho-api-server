@@ -2,7 +2,9 @@ package ohho.backend.spring.domain.member.service;
 
 import ohho.backend.spring.domain.member.entities.Member;
 import ohho.backend.spring.domain.member.model.request.SignInRequestDto;
+import ohho.backend.spring.domain.member.model.request.SignInWithGoogleRequestDto;
 import ohho.backend.spring.domain.member.model.request.SignUpRequestDto;
+import ohho.backend.spring.domain.member.model.request.SignUpWithGoogleRequestDto;
 import ohho.backend.spring.domain.member.model.response.GetMyInfoResponseDto;
 import ohho.backend.spring.domain.member.model.response.GetMemberByNicknameResponseDto;
 import ohho.backend.spring.domain.member.model.response.SignInResponseDto;
@@ -19,4 +21,8 @@ public interface MemberService {
     SignUpResponseDto signUp(SignUpRequestDto signUpRequestDto);
 
     SignInResponseDto signIn(SignInRequestDto signInRequestDto);
+
+    SignUpResponseDto signUpWithGoogle(SignUpWithGoogleRequestDto signUpWithGoogleRequestDto);
+
+    SignInResponseDto signInWithGoogle(SignInWithGoogleRequestDto signInWithGoogleRequestDto);
 }
