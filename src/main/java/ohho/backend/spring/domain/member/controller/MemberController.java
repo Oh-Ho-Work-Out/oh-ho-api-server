@@ -3,7 +3,9 @@ package ohho.backend.spring.domain.member.controller;
 import lombok.RequiredArgsConstructor;
 import ohho.backend.spring.common.ApiResponse;
 import ohho.backend.spring.domain.member.model.request.SignInRequestDto;
+import ohho.backend.spring.domain.member.model.request.SignInWithGoogleRequestDto;
 import ohho.backend.spring.domain.member.model.request.SignUpRequestDto;
+import ohho.backend.spring.domain.member.model.request.SignUpWithGoogleRequestDto;
 import ohho.backend.spring.domain.member.model.response.GetMemberByNicknameResponseDto;
 import ohho.backend.spring.domain.member.model.response.GetMyInfoResponseDto;
 import ohho.backend.spring.domain.member.model.response.SignInResponseDto;
@@ -32,6 +34,18 @@ public class MemberController {
     @PostMapping("/signin")
     public ApiResponse<SignInResponseDto> signUp(@RequestBody SignInRequestDto signInRequestDto) {
         return ApiResponse.success(memberService.signIn(signInRequestDto));
+    }
+
+    @PostMapping("/signup/google")
+    public ApiResponse<SignUpResponseDto> signUpWithGoogle(
+        @RequestBody SignUpWithGoogleRequestDto signUpWithGoogleRequestDto) {
+        return ApiResponse.success(memberService.signUpWithGoogle(signUpWithGoogleRequestDto));
+    }
+
+    @PostMapping("/signin/google")
+    public ApiResponse<SignInResponseDto> signUp(
+        @RequestBody SignInWithGoogleRequestDto signInWithGoogleRequestDto) {
+        return ApiResponse.success(memberService.signInWithGoogle(signInWithGoogleRequestDto));
     }
 
     @GetMapping("/me")
