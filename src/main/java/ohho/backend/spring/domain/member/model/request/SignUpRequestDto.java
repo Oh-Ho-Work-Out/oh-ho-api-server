@@ -2,6 +2,7 @@ package ohho.backend.spring.domain.member.model.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Value;
 import ohho.backend.spring.domain.member.enums.Age;
 import ohho.backend.spring.domain.member.enums.Gender;
 
