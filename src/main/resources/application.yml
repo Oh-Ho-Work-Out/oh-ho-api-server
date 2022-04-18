@@ -3,7 +3,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/oh_ho?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
     username: root
-    password: ENC(YNLM1NOXKQxIITPmhPi3NwaSeTt6Yseot9wetds8b3rVWaEqwqdm9BPJlEQ0apO4)
+    password: ENC(6IfNEZVb5Vm/7eYr6T9W14dJMhMj6K3kBHQOYef9jWeHO/gRu/0E/w9ueVNGPVds)
   jpa:
     hibernate:
       ddl-auto: update
@@ -15,4 +15,8 @@ spring:
   flyway:
     enabled: false
 jwt:
-  secretKey: ENC(V37JAtPWJmoZiv3+RDg+Gqa1opNuVQtjw8bk6MIFcH+lqJI4lIo9EpvfpuuLBOlj)
+  secretKey: ENC(JEypz/wn1y7JNvLC6KGjzJXLAq5A+NWDxlr6k1BMFvu4lX3mNIHrdP4dGIbTSwfM)
+oauth:
+  google:
+    client:
+      id: ENC(X+Zwlt4o21JM3BHnhcwQDRIpWmYNSYuxmgx3NUBtg8KHGMatS8oNv68LhSlwQfVVDinM9dWAbRN+UwQztmZqF9q5OPGAcQK1DVWsmEIej1OP7hX2TPBOb8ed6Caw8N0XgGcrqgAx0ZQXo7YlodagPw==)
