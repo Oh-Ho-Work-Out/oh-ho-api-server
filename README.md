@@ -1,17 +1,20 @@
 # oh-ho-server
 
-## 모듈 역할
-
-📂 ohho-storage   
-entity + repository 관련 모듈  
-📂 ohho-core   
-service 관련 모듈  
-📂 ohho-api  
-controller 관련 모듈
-
 ## 프로젝트 구조
 
-```
+### /ohho-api
+
+> controller 관리하는 모듈
+
+### /ohho-core
+
+> service, dto 관리하는 모듈
+
+### /ohho-storage
+
+> entity, repository 관리하는 모듈
+
+```bash
 📦 
 ├─ .gitignore
 ├─ README.md
