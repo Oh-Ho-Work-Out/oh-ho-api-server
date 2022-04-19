@@ -1,8 +1,8 @@
-package ohho.backend.spring.domain.notification.controller;
+package kr.ohho.ui.notification;
 
+import kr.ohho.application.notification.NotificationService;
+import kr.ohho.common.ApiResponse;
 import lombok.RequiredArgsConstructor;
-import ohho.backend.spring.common.ApiResponse;
-import ohho.backend.spring.domain.notification.service.NotificationService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;

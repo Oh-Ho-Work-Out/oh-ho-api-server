@@ -1,13 +1,13 @@
-package ohho.backend.spring.common;
+package kr.ohho.common;
 
 import java.security.Principal;
 
-import ohho.backend.spring.common.exception.BadRequestException;
-import ohho.backend.spring.common.exception.ForbiddenException;
-import ohho.backend.spring.common.exception.InternalServerErrorException;
-import ohho.backend.spring.common.exception.NotFoundException;
-import ohho.backend.spring.common.exception.ServiceUnavailableException;
-import ohho.backend.spring.common.exception.UnauthorizedException;
+import kr.ohho.common.exception.BadRequestException;
+import kr.ohho.common.exception.ForbiddenException;
+import kr.ohho.common.exception.InternalServerErrorException;
+import kr.ohho.common.exception.NotFoundException;
+import kr.ohho.common.exception.ServiceUnavailableException;
+import kr.ohho.common.exception.UnauthorizedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
 import org.springframework.web.HttpMediaTypeException;

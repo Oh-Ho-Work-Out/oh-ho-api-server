@@ -1,4 +1,4 @@
-package ohho.backend.spring.domain;
+package kr.ohho.ui;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,6 +8,6 @@ public class HelloController {
 
     @GetMapping("/hello")
     public String hello() {
-        return "Hello, Ohho-api";
+        return "Hello, Ohho-api-server";
     }
 }

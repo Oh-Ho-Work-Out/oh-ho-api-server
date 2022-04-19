@@ -1,4 +1,4 @@
-package ohho.backend.spring.common;
+package kr.ohho.common;
 
 import java.util.List;
 

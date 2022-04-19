@@ -1,16 +1,16 @@
-package ohho.backend.spring.domain.member.controller;
+package kr.ohho.ui.member;
 
+import kr.ohho.application.member.MemberService;
+import kr.ohho.application.member.model.request.SignInRequestDto;
+import kr.ohho.application.member.model.request.SignInWithGoogleRequestDto;
+import kr.ohho.application.member.model.request.SignUpRequestDto;
+import kr.ohho.application.member.model.request.SignUpWithGoogleRequestDto;
+import kr.ohho.application.member.model.response.GetMemberByNicknameResponseDto;
+import kr.ohho.application.member.model.response.GetMyInfoResponseDto;
+import kr.ohho.application.member.model.response.SignInResponseDto;
+import kr.ohho.application.member.model.response.SignUpResponseDto;
+import kr.ohho.common.ApiResponse;
 import lombok.RequiredArgsConstructor;
-import ohho.backend.spring.common.ApiResponse;
-import ohho.backend.spring.domain.member.model.request.SignInRequestDto;
-import ohho.backend.spring.domain.member.model.request.SignInWithGoogleRequestDto;
-import ohho.backend.spring.domain.member.model.request.SignUpRequestDto;
-import ohho.backend.spring.domain.member.model.request.SignUpWithGoogleRequestDto;
-import ohho.backend.spring.domain.member.model.response.GetMemberByNicknameResponseDto;
-import ohho.backend.spring.domain.member.model.response.GetMyInfoResponseDto;
-import ohho.backend.spring.domain.member.model.response.SignInResponseDto;
-import ohho.backend.spring.domain.member.model.response.SignUpResponseDto;
-import ohho.backend.spring.domain.member.service.MemberService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
