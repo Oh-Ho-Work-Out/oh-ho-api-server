@@ -1,1 +1,4 @@
-rootProject.name = 'spring'
+rootProject.name = 'ohho-server'
+include 'ohho-api'
+include 'ohho-core'
+include 'ohho-storage'
