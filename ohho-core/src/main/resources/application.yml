@@ -1,9 +1,10 @@
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/oh_ho?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
-    username: root
-    password: ENC(6IfNEZVb5Vm/7eYr6T9W14dJMhMj6K3kBHQOYef9jWeHO/gRu/0E/w9ueVNGPVds)
+    hikari:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/oh_ho?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+      username: root
+      password: ENC(6IfNEZVb5Vm/7eYr6T9W14dJMhMj6K3kBHQOYef9jWeHO/gRu/0E/w9ueVNGPVds)
   jpa:
     hibernate:
       ddl-auto: update
