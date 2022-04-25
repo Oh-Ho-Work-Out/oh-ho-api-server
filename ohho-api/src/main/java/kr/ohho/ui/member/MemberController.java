@@ -32,7 +32,7 @@ public class MemberController {
     }
 
     @PostMapping("/signin")
-    public ApiResponse<SignInResponseDto> signUp(@RequestBody SignInRequestDto signInRequestDto) {
+    public ApiResponse<SignInResponseDto> signIn(@RequestBody SignInRequestDto signInRequestDto) {
         return ApiResponse.success(memberService.signIn(signInRequestDto));
     }
 
@@ -43,7 +43,7 @@ public class MemberController {
     }
 
     @PostMapping("/signin/google")
-    public ApiResponse<SignInResponseDto> signUp(
+    public ApiResponse<SignInResponseDto> signInWithGoogle(
         @RequestBody SignInWithGoogleRequestDto signInWithGoogleRequestDto) {
         return ApiResponse.success(memberService.signInWithGoogle(signInWithGoogleRequestDto));
     }
