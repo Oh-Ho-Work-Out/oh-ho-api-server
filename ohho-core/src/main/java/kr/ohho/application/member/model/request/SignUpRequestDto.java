@@ -1,10 +1,15 @@
 package kr.ohho.application.member.model.request;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
+@Setter
 public class SignUpRequestDto {
 
     String email;
