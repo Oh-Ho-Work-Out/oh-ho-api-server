@@ -8,7 +8,7 @@ import static org.springframework.restdocs.operation.preprocess.Preprocessors.pr
 import org.springframework.restdocs.operation.preprocess.OperationRequestPreprocessor;
 import org.springframework.restdocs.operation.preprocess.OperationResponsePreprocessor;
 
-public interface ApiDocumentUtils {
+public interface ApiDocumentUtil {
 
     static OperationRequestPreprocessor getDocumentRequest() {
         return preprocessRequest(

@@ -32,7 +32,7 @@ public class MemberController {
     }
 
     @PostMapping("/signin")
-성    public ApiResponse<SignInResponseDto> signIn(@RequestBody SignInRequestDto signInRequestDto) {
+    public ApiResponse<SignInResponseDto> signIn(@RequestBody SignInRequestDto signInRequestDto) {
         return ApiResponse.success(memberService.signIn(signInRequestDto));
     }
 
